@@ -19,4 +19,4 @@
 ; 0 INC  I K ` K S K ` S ` ` S ` ` K S K ` S ` ` S `  ~ `
 ; 0 (1 + `)       i k ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ s ~      ~ `
 ; 0 (1 + `)       i k ~ k s k ~ s ~ ~ s ~       ~ `
-0 INC I K ` K S K ` S ` ` S ` ` K S K ` S ` ` S ` ` K S K ` S ` ` S ` ` I K ` K S K ` S ` ` S ` ` K S K ` S ` ` S ` ` K S K ` S ` ` ` ` ` `
+0 (1 + `) (i k ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ s ~ ~ i k ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ ~ ~) ~ `
