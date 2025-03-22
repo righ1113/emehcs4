@@ -26,12 +26,13 @@ class EmehcsBase
     parse_run([values[0]]) ? parse_run([values[1]]) : else_c.force
   end
   private def apply(c)
-    puts "f:#{@stack[-1]}, x:#{@stack[-2]}"
+    puts "(1) f:#{@stack[-1]}, x:#{@stack[-2]}"
     f = pop_raise
     if EMEHCS_FUNC_TABLE.key? f
       x = pop_raise
       EMEHCS_FUNC_TABLE[f][x]
     elsif f.is_a?(Proc)
+      puts "(4) f:#{f}, x:#{@stack[-1]}"
       x = pop_raise
       f[x]
     elsif f.is_a?(Array)
