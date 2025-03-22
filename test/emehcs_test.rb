@@ -17,6 +17,7 @@ class EmehcsTest < Minitest::Test
     code5  = '(=x (1 8 + ` `)) >fact 4 fact `'
     code6  = '(=x x) >id (5 1 - ` `) id `'
     code7  = '(=x (1 x + ` `)) >id 4 id `'
+    # code8  = '(=x ((x 1 - ` `) fact ` ` x * ` `) 1 (x 2 < ` `) ?) >fact 4 fact `'
     code8  = '(=x ((x 1 - ` `) fact ` x * ` `) 1 true ?) >fact 4 fact `' # カッコ部は遅延評価
     code9  = '(=ret =x ((x 1 - ` `) (ret x * ` `) fact ~ `) ret (x 2 < ` `) ?) >fact 4 1 fact ~ `'
     code10 = '5 1 fact ~ `'

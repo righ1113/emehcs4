@@ -90,10 +90,4 @@ class Emehcs < EmehcsBase
     end
   end
 end
-# Repl.new(Emehcs.new).prelude.repl if __FILE__ == $PROGRAM_NAME # メイン関数としたもの
-
-if __FILE__ == $PROGRAM_NAME # メイン関数としたもの
-  # より単純な階乗のテストケース
-  ret = Emehcs.new.run '(=x (x 1 - ` ` fact ` x * ` `) 1 (x 1 == ` `) ?) >fact 3 fact `'
-  p ret
-end
+Repl.new(Emehcs.new).prelude.repl if __FILE__ == $PROGRAM_NAME # メイン関数としたもの

@@ -28,7 +28,11 @@ module Const
     'length' => :length,
     'chr'    => :chr,
     'up_p'   => :up_p,
-    '?'      => :my_if_and
+    '?'      => :my_if_and,
+    'S'      => ->(f) { ->(g) { ->(x) { f[x][g[x]] } } },
+    'K'      => ->(x) { ->(_y) { x } },
+    'I'      => ->(x) { x },
+    'INC'    => ->(x) { x + 1 }
   }.freeze
 
   ERROR_MESSAGES = {
