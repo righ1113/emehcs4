@@ -10,13 +10,15 @@
 ; 0 (1 +)
 ; (((((((i k `) k s k ` s ` ` s `) ` k s k ` s ` ` s `) ` k s k ` s ` ` s `) ` i k ` k s k ` s ` ` s `) ` k s k ` s ` ` s `) ` k s k ` s `) ` ` `
 
-(>x >y >z (z y ~) z x ~ ~) >s
-(>x >_ x)            >k
-(>x x)               >i
+(>x >y >z z y ~ z x ~ `)    >s
+(>x >_ x)                   >k
+(>x x)                      >i
+
+(>_ >x x)                   >ik
+(>_ >x >y >z z y ~ z x ~ `) >sk
 
 ; succ	`s``s`ksk
 ; one	  ``s``s`ksk `ki
-; 0 INC  I K ` K S K ` S ` ` S ` ` K S K ` S ` ` S `  ~ `
-; 0 (1 + `)       i k ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ s ~      ~ `
-; 0 (1 + `)       i k ~ k s k ~ s ~ ~ s ~       ~ `
-0 (1 + `) (i k ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ s ~ ~ i k ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ s ~ ~ k s k ~ s ~ ~ ~ ~) ~ `
+; 0 (1 + `) ik k sk s ~ ~ s ~ ~ k sk s ~ ~ s ~ ~ k sk s ~ ~ s ~ ~ ik k sk s ~ ~ s ~ ~ k sk s ~ ~ s ~ ~ k sk s ~ ~ ~ ~     ~ `
+; 0 (1 + ` `) ik k sk s ~ ~ s ~ ~     ~ `
+0 (1 + ` `) ik s s ~ ~ s ~ ~     ~ `
