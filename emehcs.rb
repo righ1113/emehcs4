@@ -25,7 +25,7 @@ class EmehcsBase
     else_c = Delay.new { count == 3 ? (p 'gyaaaa'; parse_run([values[2]])) : false }
     parse_run([values[0]]) ? parse_run([values[1]]) : else_c.force
   end
-  private def apply
+  private def apply(c)
     puts "f:#{@stack[-1]}, x:#{@stack[-2]}"
     f = pop_raise
     if EMEHCS_FUNC_TABLE.key? f
@@ -35,9 +35,21 @@ class EmehcsBase
       x = pop_raise
       f[x]
     elsif f.is_a?(Array)
-      parse_array f, true # 実行する
+      if c == '~'
+        puts "(2) f:#{f}, x:#{@stack[-1]}"
+        x = pop_raise
+        [x] + f
+      else
+        parse_array f, true # 実行する
+      end
     elsif @env[f].is_a?(Array)
-      parse_array @env[f], true # 実行する
+      if c == '~'
+        puts "(3) f:#{@env[f]}, x:#{@stack[-1]}"
+        x = pop_raise
+        [x] + @env[f]
+      else
+        parse_array @env[f], true # 実行する
+      end
     end
   end
 end
@@ -62,7 +74,7 @@ class Emehcs < EmehcsBase
   private def parse_array(x, em) = em && func?(x) ? parse_run(x) : x
   private def parse_string(x, em, name = x[1..], _db = [x, @env[x]], co = Const.deep_copy(@env[x]))
     # db.each { |y| (em ? send(EMEHCS_FUNC_TABLE[y]) : @stack.push(y); return nil) if EMEHCS_FUNC_TABLE.key? y }
-    if    ['`'].include?(x) then apply
+    if    ['`', '~'].include?(x) then apply x
     elsif x == '?' then my_if_and
     elsif x[-2..] == SPECIAL_STRING_SUFFIX then x # 純粋文字列 :s
     elsif    x[0] == FUNCTION_DEF_PREFIX # 関数束縛

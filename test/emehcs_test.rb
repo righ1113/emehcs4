@@ -18,21 +18,21 @@ class EmehcsTest < Minitest::Test
     code6  = '(=x x) >id (5 1 - ` `) id `'
     code7  = '(=x (1 x + ` `)) >id 4 id `'
     code8  = '(=x ((x 1 - ` `) fact ` x * ` `) 1 true ?) >fact 4 fact `' # カッコ部は遅延評価
-    code9  = '(=ret =x ((x 1 - ` `) (ret x * ` `) fact ! `) ret (x 2 < ` `) ?) >fact 4 1 fact ! `'
-    # code10 = [5, 'fact']
+    code9  = '(=ret =x ((x 1 - ` `) (ret x * ` `) fact ~ `) ret (x 2 < ` `) ?) >fact 4 1 fact ~ `'
+    code10 = '5 1 fact ~ `'
     # code11 = [[1, 2, 3, :q], 'id']
     # code12 = [[1, 2, 3, :q], '=dat', 'dat', 'id']
 
-    assert_equal '3',  (emehcs.run code1)
-    assert_equal '11', (emehcs.run code2)
-    assert_equal '12', (emehcs.run code3)
-    assert_equal '99', (emehcs.run code4)
-    assert_equal '9',  (emehcs.run code5)
-    assert_equal '4',  (emehcs.run code6)
-    assert_equal '5',  (emehcs.run code7)
-    assert_equal '1',  (emehcs.run code8)
-    assert_equal '24', (emehcs.run code9)
-    # assert_equal 120,                  (emehcs.parse_run code10)
+    assert_equal '3',   (emehcs.run code1)
+    assert_equal '11',  (emehcs.run code2)
+    assert_equal '12',  (emehcs.run code3)
+    assert_equal '99',  (emehcs.run code4)
+    assert_equal '9',   (emehcs.run code5)
+    assert_equal '4',   (emehcs.run code6)
+    assert_equal '5',   (emehcs.run code7)
+    assert_equal '1',   (emehcs.run code8)
+    assert_equal '24',  (emehcs.run code9)
+    assert_equal '120', (emehcs.run code10)
     # assert_equal [1, 2, 3, :q],        (emehcs.parse_run code11)
     # assert_equal [1, 2, 3, :q],        (emehcs.parse_run code12)
   end
