@@ -29,28 +29,23 @@ class EmehcsBase
     puts "(1) f:#{@stack[-1]}, x:#{@stack[-2]}"
     f = pop_raise
     if EMEHCS_FUNC_TABLE.key? f
-      x = pop_raise
+      x = parse_run([pop_raise])
       EMEHCS_FUNC_TABLE[f][x]
     elsif f.is_a?(Proc)
-      puts "(4) f:#{f}, x:#{@stack[-1]}"
-      x = pop_raise
+      puts "(2) f:#{f}, x:#{@stack[-1]}"
+      x = parse_run([pop_raise])
       f[x]
-    elsif f.is_a?(Array)
-      if c == '~'
-        puts "(2) f:#{f}, x:#{@stack[-1]}"
-        x = pop_raise
-        [x] + f
-      else
-        parse_array f, true # 実行する
-      end
-    elsif @env[f].is_a?(Array)
-      if c == '~'
-        puts "(3) f:#{@env[f]}, x:#{@stack[-1]}"
-        x = pop_raise
-        [x] + @env[f]
-      else
-        parse_array @env[f], true # 実行する
-      end
+    elsif f.is_a?(Array) then apply_sub f, c
+    elsif @env[f].is_a?(Array) then apply_sub @env[f], c
+    end
+  end
+  private def apply_sub(f, c)
+    if c == '~'
+      puts "(3) f:#{f}, x:#{@stack[-1]}"
+      x = parse_run([pop_raise])
+      [x] + f
+    else
+      parse_array f, true # 実行する
     end
   end
 end
@@ -64,7 +59,7 @@ class Emehcs < EmehcsBase
     in [] then @stack.pop
     in [x, *xs]
       case x
-      in Integer | TrueClass | FalseClass then @stack.push x
+      in Integer | TrueClass | FalseClass | Proc then @stack.push x
       in Array                            then @stack.push parse_array  x, xs.empty?
       in String                           then my_ack_push parse_string x, xs.empty?
       in Symbol                           then nil # do nothing
