@@ -28,13 +28,15 @@ class EmehcsBase
   private def apply(c)
     puts "(1) f:#{@stack[-1]}, x:#{@stack[-2]}"
     f = pop_raise
+    # ------------- Proc 部 -------------
     if EMEHCS_FUNC_TABLE.key? f
-      x = parse_run([pop_raise])
+      x = parse_array(pop_raise, true)
       EMEHCS_FUNC_TABLE[f][x]
     elsif f.is_a?(Proc)
       puts "(2) f:#{f}, x:#{@stack[-1]}"
-      x = parse_run([pop_raise])
+      x = parse_array(pop_raise, true)
       f[x]
+    # ------------- Array 部 -------------
     elsif f.is_a?(Array) then apply_sub f, c
     elsif @env[f].is_a?(Array) then apply_sub @env[f], c
     end
@@ -42,7 +44,7 @@ class EmehcsBase
   private def apply_sub(f, c)
     if c == '~'
       puts "(3) f:#{f}, x:#{@stack[-1]}"
-      x = parse_run([pop_raise])
+      x = parse_array(pop_raise, true)
       [x] + f
     else
       parse_array f, true # 実行する
