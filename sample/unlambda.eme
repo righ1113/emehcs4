@@ -21,7 +21,10 @@
 ; one	  ``s``s`ksk `ki
 ; 0 (1 + `) ik k sk s ~ ~ s ~ ~ k sk s ~ ~ s ~ ~ k sk s ~ ~ s ~ ~ ik k sk s ~ ~ s ~ ~ k sk s ~ ~ s ~ ~ k sk s ~ ~ ~ ~     ~ `
 ; 0 (1 + ` `) ik k sk s ~ ~ s ~ ~     ~ `
-0 (1 + ` `)
-  ik s s  ~ s ~ ~
-    s s  ~ s ~ ~
-      ~ `
+
+; 0 INC
+  ; ik s s  ~ s ~ ~
+  ;   s s  ~ s ~ ~
+  ; I K ` K S K ` S ` ` S ` `
+  ;     ` `
+0 INC I K ` K S K ` S ` ` S ` ` K S K ` S ` ` S ` ` K S K ` S ` ` S ` ` I K ` K S K ` S ` ` S ` ` K S K ` S ` ` S ` ` K S K ` S ` ` ` ` ` `

@@ -81,6 +81,7 @@ class Emehcs < EmehcsBase
       em_n_nil(em, name)
     elsif  @env[x].is_a?(Array) then parse_array co, em # code の最後かつ関数なら実行する
     elsif !@env[x].nil? then @env[x] # x が変数名
+    elsif EMEHCS_FUNC_TABLE.key? x then EMEHCS_FUNC_TABLE[x]
     else
       x
     end
